@@ -9,6 +9,40 @@
     <script nomodule src="/build/stencil-starter-project-name.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <div>
+      <button id="toggleNativeBtn">Toggle native</button>
+      <input disabled id="nativeInput"></input>
+    </div>
+    <div>
+      <button id="toggleStencilBtn">Toggle Stencil</button>
+      <input-wrapper disabled id="stencilInput"></input-wrapper>
+    </div>
   </body>
+  <script>
+    const stencilInput = document.getElementById("stencilInput");
+    const nativeInput = document.getElementById("nativeInput");
+    const toggleStencilBtn = document.getElementById("toggleStencilBtn");
+    const toggleNativeBtn = document.getElementById("toggleNativeBtn");
+
+    let stencilInputDisabled = true;
+    let nativeInputDisabled = true;
+
+    function toggle(element, newDisabledValue) {
+      element.disabled = newDisabledValue;
+      if (!newDisabledValue) {
+        element.focus();
+      }
+    }
+
+    toggleStencilBtn.addEventListener("click", () => {
+      stencilInputDisabled = !stencilInputDisabled;
+      toggle(stencilInput, stencilInputDisabled);
+    });
+
+    toggleNativeBtn.addEventListener("click", () => {
+      nativeInputDisabled = !nativeInputDisabled;
+      toggle(nativeInput, nativeInputDisabled);
+    });
+
+  </script>
 </html>
